@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    min-height: 100%;
+    margin: auto;
+    background-color: #f8f8f8;
+}
+
+.top {
+    flex-grow: 1;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 2px solid darkgreen;
+    background-color: silver;
+    background-image: url('images/book-background.jpg');
+    background-size: 100%;
+    background-position-y: 100%;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
+}
+
+
+.app-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    color: forestgreen;
+    font: 1.4em sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.logo-image {
+    width: 92px;
+}
+
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-txt {
+    width: 480px;
+    height: 32px;
+    padding: 0 16px;
+    border: 1px solid forestgreen;
+    border-radius: 4px 0px 0px 4px;
+    color: #6c6c6c;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.search-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 0px 4px 4px 0px;
+    background-color: forestgreen;
+}
+
+
+.menu {
+    display: flex;
+    list-style: none;
+    height: 100px;
+}
+
+.menu-item {
+    display: block;
+    width: 110px;
+    height: 100%;
+    padding: 8px 4px;
+    color: darkgreen;
+    font: 16px sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu-item:hover {
+    background-color: forestgreen;
+    color: lightgreen;
+    opacity: 0.7;
+}
+
+
+.footer {
+    height: 48px;
+    margin-top: 16px;
+    padding: 1em;
+    background-color: #eaeaea;
+    color: forestgreen;
+    border-top: 2px solid darkgreen;
+}
+
+
+.welcome {
+    padding: 2em 0;
+    color: purple;
+    font: 2em serif;
+    font-style: italic;
+    text-align: center;
+    line-height: 4em;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    min-height: 50%;
+    margin: auto;
+    padding: 8px;
+}
+
+.form-lbl {
+    height: 25px;
+    font: 16px sans-serif;
+}
+
+.txt-control,
+.btn-control,
+.pwd-control {
+    width: 256px;
+    height: 25px;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    border: thin solid purple;
+    border-radius: 4px;
+    color: #707070;
+    font-size: 14px;
+}
+
+.btn-login {
+    width: 128px;
+    margin-top: 16px;
+}
+
+.btn-control:hover {
+    background-color: purple;
+    color: white;
+}
+
+
+.page-header {
+    padding-right: 2em;
+    color: purple;
+    font: 2em serif;
+    font-variant: small-caps;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+.catalog {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+
+.book-block {
+    width: 180px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    text-align: center;
+}
+
+
+.catalog img {
+    width: 100%;
+}
+
+
+.catalog a {
+    color: purple;
+    font: 0.8em sans-serif;
+    font-variant: small-caps;
+    text-decoration: none;
+}
+
+
+.buy-block {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 150px;
+    margin: 32px;
+    border: 1px dashed silver;
+    border-radius: 16px;
+    font: 1.5em sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.buy-button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    border: 2px solid darkgreen;
+    border-radius: 16px;
+    color: darkgreen;
+    font: 0.8em sans-serif;
+}
+
+.buy-icon {
+    width: 48px;
+}
+
+.buy-button:hover {
+    background-color: silver;
+    border: 2px solid orangered;
+    color: orangered;
+}
+
+.buy-button:active {
+    background-color: orangered;
+    color: silver;
+}
+
+
+.description {
+    padding: 16px;
+}
+
+
+.cover-image {
+    height: 480px;
+    float: left;
+    margin-right: 32px;
+    border: 4px solid purple;
+    border-radius: 8px;
+}
+
+.cover-image:hover {
+    border-color: transparent;
+}
+
+
+.section-header {
+    margin: 16px 0;
+    text-align: center;
+    background-color: #eaeaea;
+    color: black;
+    border-top: 1px dashed silver;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font: 18px serif;
+    font-weight: 400;
+    font-variant: small-caps;
+    overflow: hidden;
+}
+
+
+.short-desc-text {
+    color: #707070;
+    font: 14px "Times New Roman";
+    font-style: italic;
+    font-weight: 100;
+    font-variant: small-caps;
+    line-height: 16px;
+    text-align: justify;
+}
+
+
+.long-desc-text {
+    color: #484343;
+    font: 16px "Times New Roman";
+    font-weight: 400;
+    line-height: 24px;
+    text-align: justify;
+}
+
+
+.short-desc-text:first-letter, .long-desc-text:first-letter {
+    font: 18px sans-serif;
+}
+
+
+.details {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+
+.details tr {
+    border-top: 1px dashed silver;
+    border-bottom: 1px dashed silver;
+}
+
+
+.details-icon {
+    width: 16px;
+    height: 16px;
+}
+
+
+.details td:nth-child(2) {
+    padding: 0 16px;
+    color: steelblue;
+    font: 1em monospace;
+    font-weight: 800;
+}
+
+
+.details td:last-child {
+    color: purple;
+    font: 0.7em sans-serif;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+.block-header {
+    margin-bottom: 8px;
+    padding: 0 8px;
+    background-color: #eaeaea;
+    color: purple;
+    font: 2em serif;
+    font-variant: small-caps;
+}
+
+
+.message-form-block {
+    float: left;
+    width: 400px;
+    margin: 16px;
+    padding-bottom: 8px;
+    border: 2px dotted silver;
+    border-radius: 4px;
+    color: #707070;
+    font: 1em serif;
+}
+
+
+.single-line-field {
+    width: 80%;
+    height: 25px;
+    margin: 8px 10%;
+    border: thin solid purple;
+    border-radius: 4px;
+    color: #707070;
+    font: 1em serif;
+}
+
+.input-reaction:focus {
+    background-color: #eaeaea;
+    color: purple;
+}
+
+
+.text-field {
+    text-transform: capitalize;
+}
+
+
+.multi-line-field {
+    width: 80%;
+    height: 200px;
+    margin: 8px 10%;
+    border: thin solid purple;
+    border-radius: 4px;
+    resize: none;
+}
+
+
+.form-button {
+    width: 40%;
+    height: 40px;
+    margin: 8px 10%;
+    border: thin solid silver;
+    border-radius: 4px;
+    color: #707070;
+}
+
+.form-button:hover {
+    border: thin solid purple;
+    color: purple;
+}
+
+
+.address-block {
+    float: right;
+    width: 400px;
+    margin: 16px;
+    border: 2px dotted silver;
+    border-radius: 4px;
+}
+
+
+.contacts {
+    width: 80%;
+    margin: 8px auto;
+}
+
+
+.map {
+    width: 100%;
+    height: 400px;
+    border: 1px inset silver;
+}
+
+
+.address-block td:first-child {
+    vertical-align: middle;
+    color: #707070;
+    font: 1em serif;
+}
+
+
+.address-block td:last-child {
+    vertical-align: middle;
+    text-align: right;
+    color: purple;
+    font: 0.8em sans-serif;
+    font-weight: bold;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Login</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" th:href="@{login_files/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{login_files/fontawesome-all.css}">
+    <link rel="stylesheet" th:href="@{login_files/datatables.css}">
+    <link rel="stylesheet" th:href="@{login_files/fullcalendar.css}">
+    <link rel="stylesheet" th:href="@{login_files/bootadmin.css}">
+</head>
+<body class="bg-light">
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-4">
+
+            <h1 class="text-center mb-4">Administration tool</h1>
+
+            <div class="card">
+                <div class="card-body">
+                    <form>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input type="checkbox" name="remember" class="form-check-input">
+                                Remember Me
+                            </label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col pr-2">
+                                <button type="submit" class="btn btn-block btn-primary">Login</button>
+                            </div>
+                            <div class="col pl-2">
+                                <a class="btn btn-block btn-link" href="#">Forgot Password</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script th:src="@{login_files/analytics.js}"></script>
+<script th:src="@{login_files/jquery.js}"></script>
+<script th:src="@{login_files/bootstrap.js}"></script>
+<script th:src="@{login_files/datatables.js}"></script>
+<script th:src="@{login_files/moment.js}"></script>
+<script th:src="@{login_files/fullcalendar.js}"></script>
+<script th:src="@{login_files/bootadmin.js}"></script>
+
+
+</body>
+</html>

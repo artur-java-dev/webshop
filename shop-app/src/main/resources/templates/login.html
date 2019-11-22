@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Вход</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top">
+        <div class="header">
+            <a class="app-name" th:href="@{index.html}">
+                <img class="logo-image" th:src="@{images/logo.png}" alt="">
+                <p>
+                    Mind<br>
+                    Expanding<br>
+                    Books<br>
+                </p>
+            </a>
+
+            <div class="search">
+                <input class="search-txt" type="text" placeholder="Поиск"
+                       autocapitalize="off" autocomplete="off"
+                       spellcheck="false" maxlength="255">
+                <input class="search-btn" type="image" th:src="@{images/search.svg}" alt="">
+            </div>
+
+            <ul class="menu">
+                <li>
+                    <a class="menu-item" th:href="@{catalog.html}">Каталог</a>
+                </li>
+                <li>
+                    <a class="menu-item" th:href="@{contacts.html}">Контакты</a>
+                </li>
+                <li>
+                    <a class="menu-item" th:href="@{login.html}">Вход</a>
+                </li>
+                <li>
+                    <a class="menu-item" th:href="@{registration.html}">Регистрация</a>
+                </li>
+            </ul>
+        </div>
+
+        <form>
+            <div class="login-form">
+                <label class="form-lbl">Имя пользователя</label>
+                <input type="text" class="txt-control">
+
+                <label class="form-lbl">Пароль</label>
+                <input type="password" class="pwd-control">
+
+                <div>
+                    <label class="form-lbl">
+                        <input type="checkbox" class="chk-control" name="remember">
+                        Запомнить меня
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-control btn-login">Войти</button>
+                <a class="btn-link" href="#">Забыли пароль?</a>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="footer">
+        &copy;&nbsp;Все права защищены
+    </div>
+
+</div>
+
+</body>
+
+</html>
