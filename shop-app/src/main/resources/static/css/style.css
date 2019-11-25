@@ -30,7 +30,7 @@ html, body {
     margin-bottom: 16px;
     border-bottom: 2px solid darkgreen;
     background-color: silver;
-    background-image: url('images/book-background.jpg');
+    background-image: url('../images/book-background.jpg');
     background-size: 100%;
     background-position-y: 100%;
     background-repeat: no-repeat;
