@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import ru.geekbrains.dbcommon.model.Role;
 
 
-@Repository
+@Repository("roleRepository")
 public interface RoleRepository
 		extends JpaRepository<Role, Long>
 {
