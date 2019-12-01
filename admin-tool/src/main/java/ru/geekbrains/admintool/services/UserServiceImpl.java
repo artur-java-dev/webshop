@@ -2,6 +2,7 @@ package ru.geekbrains.admintool.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,16 +33,18 @@ public class UserServiceImpl
 
 
   @Autowired
-  public void setUserRepository(UserRepository repository)
+  @Qualifier("userRepository")
+  public void setUserRepository(UserRepository urepo)
   {
-	userRepository = repository;
+	userRepository = urepo;
   }
 
 
   @Autowired
-  public void setRoleRepository(RoleRepository repository)
+  @Qualifier("roleRepository")
+  public void setRoleRepository(RoleRepository rrepo)
   {
-	roleRepository = repository;
+	roleRepository = rrepo;
   }
 
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import ru.geekbrains.dbcommon.model.User;
 
 
-@Repository
+@Repository("userRepository")
 public interface UserRepository
 		extends JpaRepository<User, Long>
 {
