@@ -1,15 +1,15 @@
 package ru.geekbrains.dbcommon;
 
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-
-@SpringBootTest
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//
+//@SpringBootTest
 class DbCommonApplicationTests
 {
 
-  @Test
+  //  @Test
   void contextLoads()
   {
   }
