@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<div class="description" th:fragment="content">
+
+    <img class="cover-image" th:src="@{/image/${product.imageIds[0]}}">
+    <h1 class="title">[[${product.title}]]</h1>
+
+    <div class="buy-block">
+        <span class="price">[[${product.price}]] ₽</span>
+        <button class="buy-button">
+            <img class="buy-icon" th:src="@{icons/to-cart-icon.png}">
+            <span>Добавить<br>в корзину</span>
+        </button>
+    </div>
+
+    <div>
+        <h2 class="section-header">Краткое описание</h2>
+        <p class="short-desc-text">[[${product.description}]]</p>
+    </div>
+
+    <div>
+        <h2 class="section-header">Характеристики</h2>
+        <table class="details">
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Автор:</td>
+                <td>[[${product.details.author}]]</td>
+            </tr>
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Издательство:</td>
+                <td>[[${product.details.publishingHouse}]]</td>
+            </tr>
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Год выпуска:</td>
+                <td>[[${product.details.year}]]</td>
+            </tr>
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Количество страниц:</td>
+                <td>[[${product.details.pagesCount}]]</td>
+            </tr>
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Язык издания:</td>
+                <td>[[${product.details.language}]]</td>
+            </tr>
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Тип обложки:</td>
+                <td>[[${product.details.coverType}]]</td>
+            </tr>
+            <tr>
+                <td><img class="details-icon" th:src="@{icons/details-icon.png}"></td>
+                <td>Тираж:</td>
+                <td>[[${product.details.printingCount}]]</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h2 class="section-header">Подробное описание</h2>
+        <p class="long-desc-text">[[${product.details.longDescription}]]</p>
+    </div>
+
+</div>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 package ru.geekbrains.shopapp.services;
 
 
+import ru.geekbrains.dbcommon.model.Category;
 import ru.geekbrains.shopapp.dto.ProductDTO;
 
 import java.io.Serializable;
@@ -12,8 +13,12 @@ public interface ProductService
 		extends Serializable
 {
 
-  Optional<ProductDTO> findById(Long id);
+  Optional<ProductDTO> findProductById(Long id);
 
-  List<ProductDTO> findAll();
+  List<ProductDTO> findAllProducts();
+
+  List<Category> findAllCategories();
+
+  List<ProductDTO> findProductsByCategory(Long id);
 
 }

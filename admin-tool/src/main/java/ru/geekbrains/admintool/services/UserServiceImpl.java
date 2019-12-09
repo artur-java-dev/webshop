@@ -3,10 +3,6 @@ package ru.geekbrains.admintool.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +12,8 @@ import ru.geekbrains.dbcommon.model.User;
 import ru.geekbrains.dbcommon.repo.RoleRepository;
 import ru.geekbrains.dbcommon.repo.UserRepository;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
@@ -49,17 +46,37 @@ public class UserServiceImpl
 
 
   @Autowired
-  public void setPasswordEncoder(BCryptPasswordEncoder passwordEncoder)
+  public void setPasswordEncoder(BCryptPasswordEncoder encoder)
   {
-	this.passwordEncoder = passwordEncoder;
+	passwordEncoder = encoder;
   }
 
 
   @Override
   @Transactional
-  public User findByUserName(String username)
+  public List<UserDTO> findAllUsers()
   {
-	return userRepository.findOneByUserName(username);
+	return userRepository.findAll().stream()
+						 .map(UserDTO::new)
+						 .collect(toList());
+  }
+
+
+  @Override
+  @Transactional
+  public Optional<UserDTO> findUserById(Long id)
+  {
+	return userRepository.findById(id)
+						 .map(UserDTO::new);
+  }
+
+
+  @Override
+  @Transactional
+  public Optional<UserDTO> findByUserName(String username)
+  {
+	return userRepository.findOneByUserName(username)
+						 .map(UserDTO::new);
   }
 
 
@@ -69,7 +86,7 @@ public class UserServiceImpl
   {
 	User user = new User();
 
-	if (findByUserName(dto.userName) != null)
+	if (userRepository.findOneByUserName(dto.userName).isPresent())
 	  return false;
 
 	user.setUserName(dto.userName);
@@ -80,6 +97,7 @@ public class UserServiceImpl
 	user.setEmail(dto.email);
 	Role role = roleRepository.findOneByName("ROLE_CLIENT");
 	user.setRoles(singletonList(role));
+
 	userRepository.save(user);
 
 	return true;
@@ -88,29 +106,22 @@ public class UserServiceImpl
 
   @Override
   @Transactional
-  public UserDetails loadUserByUsername(String userName)
-  throws UsernameNotFoundException
+  public boolean delete(Long id)
   {
-	User user = userRepository.findOneByUserName(userName);
+	if (!userRepository.findById(id).isPresent())
+	  return false;
 
-	if (user == null)
-	  throw new UsernameNotFoundException("Invalid username or password");
+	userRepository.deleteById(id);
 
-	String nm = user.getUserName();
-	String pw = user.getPassword();
-	Collection<GrantedAuthority> auths = mapRolesToAuthorities(user.getRoles());
-
-	UserDetails ud = new org.springframework.security.core.userdetails.User(nm, pw, auths);
-
-	return ud;
+	return true;
   }
 
 
-  private Collection<GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles)
+  @Override
+  @Transactional
+  public List<Role> findAllRoles()
   {
-	return roles.stream()
-				.map(x -> new SimpleGrantedAuthority(x.getName()))
-				.collect(toList());
+	return roleRepository.findAll();
   }
 
 }

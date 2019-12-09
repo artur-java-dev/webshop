@@ -4,6 +4,7 @@ package ru.geekbrains.dbcommon.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -127,6 +128,15 @@ public class Product
   public void setCategory(Category category)
   {
 	this.category = category;
+  }
+
+
+  public void addImage(Image image)
+  {
+	if (images == null)
+	  images = new ArrayList<>();
+
+	images.add(image);
   }
 
 }

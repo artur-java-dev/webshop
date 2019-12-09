@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Главная</title>
+    <title>Каталог</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
@@ -13,7 +13,7 @@
 <div class="container">
     <div class="top">
         <div th:replace="fragments/header::header"/>
-        <div th:replace="fragments/index::content"/>
+        <div th:replace="fragments/catalog::content"/>
     </div>
     <div th:replace="fragments/footer::footer"></div>
 </div>

@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.geekbrains.shopapp.dto.ProductDTO;
 import ru.geekbrains.shopapp.services.ProductService;
 
-import java.util.List;
-
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/catalog")
 public class ProductController
 {
 
@@ -30,24 +28,33 @@ public class ProductController
   }
 
 
-  @GetMapping("/")
+  @GetMapping("")
   public String getAllProducts(Model model)
   {
-	List<ProductDTO> all = prodService.findAll();
-	model.addAttribute("products", all);
+	model.addAttribute("products", prodService.findAllProducts());
+	model.addAttribute("categories", prodService.findAllCategories());
 
-	return "products";
+	return "catalog";
   }
 
 
   @GetMapping("/{id}")
   public String getProduct(@PathVariable("id") Long id, Model model)
   {
-	ProductDTO prod = prodService.findById(id)
+	ProductDTO prod = prodService.findProductById(id)
 								 .orElseThrow(IllegalArgumentException::new);
 	model.addAttribute("product", prod);
 
 	return "product_details";
+  }
+
+
+  @GetMapping("/category/{id}")
+  public String getProductsInCategory(@PathVariable("id") Long id, Model model)
+  {
+	model.addAttribute("products", prodService.findProductsByCategory(id));
+
+	return "catalog";
   }
 
 }

@@ -7,7 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"ru.geekbrains.dbcommon"})
+@ComponentScan(basePackages = {
+		"ru.geekbrains.dbcommon",
+		"ru.geekbrains.shopapp.controllers",
+		"ru.geekbrains.shopapp.services",
+})
 public class ShopAppApplication
 {
 

@@ -1,15 +1,13 @@
-package ru.geekbrains.shopapp.controllers;
+package ru.geekbrains.admintool.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.geekbrains.admintool.services.ProductService;
 import ru.geekbrains.dbcommon.model.Image;
-import ru.geekbrains.dbcommon.model.ImageData;
-import ru.geekbrains.dbcommon.repo.ImageRepository;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,18 +15,17 @@ import java.util.Optional;
 
 
 @Controller
-@RequestMapping("/image")
+@RequestMapping("/images")
 public class ImageController
 {
 
-  private ImageRepository repo;
+  private ProductService prodService;
 
 
   @Autowired
-  @Qualifier("imageRepository")
-  public void setImageRepository(ImageRepository ir)
+  public void setProductService(ProductService service)
   {
-	repo = ir;
+	prodService = service;
   }
 
 
@@ -36,16 +33,16 @@ public class ImageController
   public void getProductImage(@PathVariable("id") Long id, HttpServletResponse res)
   throws IOException
   {
-	Optional<Image> img = repo.findById(id);
+	Optional<Image> img = prodService.findImageById(id);
 
-	if (!img.isPresent())
-	  return;
+	if (img.isPresent())
+	{
+	  String contType = img.get().getContentType();
+	  res.setContentType(contType);
 
-	res.setContentType(img.get().getContentType());
-
-	ImageData data = img.get().getImageData();
-	res.getOutputStream().write(data.getData());
+	  byte[] data = img.get().getImageData().getData();
+	  res.getOutputStream().write(data);
+	}
   }
-
 
 }
