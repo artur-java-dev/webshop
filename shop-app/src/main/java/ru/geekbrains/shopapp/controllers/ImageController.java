@@ -32,8 +32,8 @@ public class ImageController
   }
 
 
-  @GetMapping("/{imageId}")
-  public void getProductImage(@PathVariable("imageId") Long id, HttpServletResponse resp)
+  @GetMapping("/{id}")
+  public void getProductImage(@PathVariable("id") Long id, HttpServletResponse res)
   throws IOException
   {
 	Optional<Image> img = repo.findById(id);
@@ -41,10 +41,10 @@ public class ImageController
 	if (!img.isPresent())
 	  return;
 
-	resp.setContentType(img.get().getContentType());
+	res.setContentType(img.get().getContentType());
 
 	ImageData data = img.get().getImageData();
-	resp.getOutputStream().write(data.getData());
+	res.getOutputStream().write(data.getData());
   }
 
 

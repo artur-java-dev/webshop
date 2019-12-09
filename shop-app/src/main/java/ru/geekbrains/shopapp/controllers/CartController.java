@@ -54,7 +54,7 @@ public class CartController
   public String updateCart(CartItem item)
   {
 	Long id = item.getProductId();
-	ProductDTO prod = prodService.findById(id)
+	ProductDTO prod = prodService.findProductById(id)
 								 .orElseThrow(IllegalArgumentException::new);
 
 	item.setProduct(prod);

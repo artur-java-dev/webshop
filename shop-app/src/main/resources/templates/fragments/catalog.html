@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<div class="catalog-content" th:fragment="content">
+
+    <div class="categories">
+        <ul class="categories-list">
+            <li th:each="cat: ${categories}">
+                <a class="category-link" th:href="@{/catalog/category/${cat.id}}">
+                    [[${cat.name}]]
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="catalog">
+        <div class="book-block" th:each="prod: ${products}">
+            <a th:href="@{/products/${prod.id}}">
+                <img th:src="@{/image/${prod.imageIds[0]}}">
+                [[${prod.title}]]
+            </a>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
