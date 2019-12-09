@@ -39,7 +39,6 @@ public class ProductDetails
   @Column(name = "printing_count", nullable = false)
   private Integer printingCount;
 
-
   @Column(name = "long_description")
   private String longDescription;
 

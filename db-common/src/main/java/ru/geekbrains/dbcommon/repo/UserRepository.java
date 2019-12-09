@@ -5,12 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.geekbrains.dbcommon.model.User;
 
+import java.util.Optional;
+
 
 @Repository("userRepository")
 public interface UserRepository
 		extends JpaRepository<User, Long>
 {
 
-  User findOneByUserName(String username);
+  Optional<User> findOneByUserName(String username);
 
 }
