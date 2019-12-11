@@ -1,8 +1,8 @@
-package ru.geekbrains.proxy;
+package ru.geekbrains.eureka;
 
 
 //@SpringBootTest
-class ProxyApplicationTests
+class RegistryServerApplicationTests
 {
 
   //  @Test
