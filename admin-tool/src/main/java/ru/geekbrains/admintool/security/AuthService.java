@@ -15,6 +15,8 @@ import ru.geekbrains.dbcommon.model.User;
 import ru.geekbrains.dbcommon.repo.UserRepository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -41,14 +43,15 @@ public class AuthService
   public UserDetails loadUserByUsername(String userName)
   throws UsernameNotFoundException
   {
-	User user = userRepo.findOneByUserName(userName);
+	Optional<User> user = userRepo.findOneByUserName(userName);
 
-	if (user == null)
+	if (!user.isPresent())
 	  throw new UsernameNotFoundException("Invalid username or password");
 
-	String nm = user.getUserName();
-	String pw = user.getPassword();
-	Collection<GrantedAuthority> auths = mapRolesToAuthorities(user.getRoles());
+	String nm = user.get().getUserName();
+	String pw = user.get().getPassword();
+	List<Role> roles = user.get().getRoles();
+	Collection<GrantedAuthority> auths = mapRolesToAuthorities(roles);
 
 	UserDetails ud = new org.springframework.security.core.userdetails.User(nm, pw, auths);
 
