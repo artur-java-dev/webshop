@@ -8,8 +8,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 
 @Entity
-@Table(name = "roles")
-public class Role
+@Table(name = "delivery_methods")
+public class DeliveryMethod
 		implements Serializable
 {
 
@@ -18,8 +18,13 @@ public class Role
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "name")
+  @Column(name = "name", unique = true, nullable = false)
   private String name;
+
+
+  public DeliveryMethod()
+  {
+  }
 
 
   public Long getId()

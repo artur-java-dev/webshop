@@ -1,0 +1,202 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="art (generated)" id="1576498413060-5">
+        <createTable tableName="addresses">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="addressesPK"/>
+            </column>
+            <column name="apartment_number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="building_number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="region" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="art (generated)" id="1576498413060-6">
+        <createTable tableName="customers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="customersPK"/>
+            </column>
+            <column name="firstname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="middlename" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="art (generated)" id="1576498413060-7">
+        <createTable tableName="delivery_methods">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="delivery_methodsPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="art (generated)" id="1576498413060-8">
+        <createTable tableName="order_details">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="order_detailsPK"/>
+            </column>
+            <column name="delivery_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="addressee_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_address_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_method_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment_method_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="art (generated)" id="1576498413060-9">
+        <createTable tableName="order_items">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="order_itemsPK"/>
+            </column>
+            <column name="count" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_cost" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="art (generated)" id="1576498413060-10">
+        <createTable tableName="orders">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="ordersPK"/>
+            </column>
+            <column name="payment_sum" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="details_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="art (generated)" id="1576498413060-11">
+        <addUniqueConstraint columnNames="phone_number" constraintName="UC_CUSTOMERSPHONE_NUMBER_COL"
+                             tableName="customers"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-12">
+        <addUniqueConstraint columnNames="name" constraintName="UC_DELIVERY_METHODSNAME_COL"
+                             tableName="delivery_methods"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-13">
+        <addUniqueConstraint columnNames="order_number" constraintName="UC_ORDER_DETAILSORDER_NUMBER_COL"
+                             tableName="order_details"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-14">
+        <addUniqueConstraint columnNames="product_id" constraintName="UK_3fea23hxar30bx7m7h8ed25n9"
+                             tableName="order_items"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-15">
+        <addUniqueConstraint columnNames="details_id" constraintName="UK_lkq1oj74sqhjjgj2juop3g7ns" tableName="orders"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-16">
+        <addForeignKeyConstraint baseColumnNames="details_id" baseTableName="orders"
+                                 constraintName="FK2fkxo17vh4bx0ntmss8c80twe" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="order_details" validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-17">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="orders"
+                                 constraintName="FK32ql8ubntj5uh44ph9659tiih" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"
+                                 validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-18">
+        <addForeignKeyConstraint baseColumnNames="addressee_id" baseTableName="order_details"
+                                 constraintName="FK46rf0s1rrqjcxmnlvd6ve8aj5" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="customers"
+                                 validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-19">
+        <addForeignKeyConstraint baseColumnNames="delivery_method_id" baseTableName="order_details"
+                                 constraintName="FK4oebfaj1sk0mmvdwg5on9h2f0" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="delivery_methods" validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-20">
+        <addForeignKeyConstraint baseColumnNames="payment_method_id" baseTableName="order_details"
+                                 constraintName="FK5r2sob8in4xomv32lr56a025v" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="categories"
+                                 validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-21">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="order_items"
+                                 constraintName="FKbioxgbv59vetrxe0ejfubep1w" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="orders"
+                                 validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-22">
+        <addForeignKeyConstraint baseColumnNames="delivery_address_id" baseTableName="order_details"
+                                 constraintName="FKhc7fkrd0e1y6rxqpfvw1gf6da" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="addresses"
+                                 validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-23">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="order_items"
+                                 constraintName="FKocimc7dtr037rh4ls4l95nlfi" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="products"
+                                 validate="true"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-1">
+        <dropUniqueConstraint constraintName="UC_CATEGORIESNAME_COL" tableName="categories"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-2">
+        <addUniqueConstraint columnNames="name" constraintName="UC_CATEGORIESNAME_COL" tableName="categories"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-3">
+        <dropUniqueConstraint constraintName="UK_fabyim0xacgvp0554lya5s455" tableName="images"/>
+    </changeSet>
+    <changeSet author="art (generated)" id="1576498413060-4">
+        <addUniqueConstraint columnNames="data_id" constraintName="UK_fabyim0xacgvp0554lya5s455" tableName="images"/>
+    </changeSet>
+
+</databaseChangeLog>
