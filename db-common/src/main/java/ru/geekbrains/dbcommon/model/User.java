@@ -2,6 +2,7 @@ package ru.geekbrains.dbcommon.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
@@ -11,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "users")
 public class User
+		implements Serializable
 {
 
   @Id
@@ -38,6 +40,10 @@ public class User
 			 joinColumns = @JoinColumn(name = "user_id"),
 			 inverseJoinColumns = @JoinColumn(name = "role_id"))
   private List<Role> roles;
+
+
+  @OneToMany(mappedBy = "user", fetch = LAZY)
+  private List<Order> orders;
 
 
   public User()
@@ -120,6 +126,12 @@ public class User
   public void setRoles(List<Role> roles)
   {
 	this.roles = roles;
+  }
+
+
+  public List<Order> getOrders()
+  {
+	return orders;
   }
 
 }
