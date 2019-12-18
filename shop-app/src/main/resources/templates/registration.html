@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Вход</title>
+    <title>Регистрация</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
@@ -13,24 +13,10 @@
 <div class="container">
     <div class="top">
         <div th:replace="fragments/header::header"/>
-        <div th:replace="fragments/login::content"/>
+        <div th:replace="fragments/registration::content"/>
     </div>
     <div th:replace="fragments/footer::footer"></div>
 </div>
-
-<div class="container">
-
-    <div class="top">
-
-
-    </div>
-
-    <div class="footer">
-        &copy;&nbsp;Все права защищены
-    </div>
-
-</div>
-
 </body>
 
 </html>
