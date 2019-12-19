@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<form th:fragment="content" th:action="@{/registration}" method="post" th:object="${user}">
+    <div class="login-form">
+        <label class="form-lbl">Имя пользователя</label>
+        <input type="text" class="txt-control" th:field="*{userName}">
+        <small class="error" th:each="err: ${#fields.errors('userName')}" th:text="${err}"/>
+
+        <label class="form-lbl">Пароль</label>
+        <input type="password" class="pwd-control" th:field="*{pword}">
+        <small class="error" th:each="err: ${#fields.errors('pword')}" th:text="${err}"/>
+
+        <label>Повтор пароля</label>
+        <input type="password" class="pwd-control" th:field="*{pwordRepeat}">
+        <small class="error" th:each="err: ${#fields.errors('pwordRepeat')}" th:text="${err}"/>
+
+        <label class="form-lbl">Имя</label>
+        <input type="text" class="txt-control" th:field="*{firstName}">
+
+        <label class="form-lbl">Фамилия</label>
+        <input type="text" class="txt-control" th:field="*{lastName}">
+
+        <label class="form-lbl">E-mail</label>
+        <input type="email" class="txt-control" th:field="*{email}">
+
+        <button type="submit" class="btn-control">Зарегистрироваться</button>
+    </div>
+</form>
+</body>
+
+</html>
