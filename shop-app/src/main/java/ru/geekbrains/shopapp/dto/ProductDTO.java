@@ -15,13 +15,13 @@ public class ProductDTO
 {
 
 
-  public final Long id;
-  public final String title;
-  public final BigDecimal price;
-  public final String description;
-  public final String category;
-  public final List<Long> imageIds;
-  public final ProductDetails details;
+  public Long id;
+  public String title;
+  public BigDecimal price;
+  public String description;
+  public String category;
+  public List<Long> imageIds;
+  public ProductDetails details;
 
 
   public ProductDTO(Product prod)
@@ -34,6 +34,11 @@ public class ProductDTO
 	List<Image> img = prod.getImages();
 	imageIds = img.stream().map(Image::getId).collect(toList());
 	details = prod.getDetails();
+  }
+
+
+  public ProductDTO()
+  {
   }
 
 }

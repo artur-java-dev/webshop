@@ -134,4 +134,11 @@ public class User
 	return orders;
   }
 
+
+  public void setId(Long id)
+  {
+	this.id = id;
+  }
+
+
 }

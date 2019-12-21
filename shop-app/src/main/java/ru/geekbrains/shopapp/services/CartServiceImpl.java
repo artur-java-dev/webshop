@@ -47,7 +47,7 @@ public class CartServiceImpl
   public void removeProduct(ProductDTO prod, int count)
   {
 	if (!itemsByProductID.containsKey(prod.id))
-	  return;
+	  throw new IllegalArgumentException("Cart are not contains passed product");
 
 	CartItem item = itemsByProductID.get(prod.id);
 
@@ -61,6 +61,9 @@ public class CartServiceImpl
   @Override
   public void removeProduct(ProductDTO prod)
   {
+	if (!itemsByProductID.containsKey(prod.id))
+	  throw new IllegalArgumentException("Cart are not contains passed product");
+
 	itemsByProductID.remove(prod.id);
   }
 
