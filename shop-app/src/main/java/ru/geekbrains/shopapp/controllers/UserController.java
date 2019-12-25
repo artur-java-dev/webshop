@@ -49,7 +49,7 @@ public class UserController
   @GetMapping("/authUser")
   public String authUser()
   {
-	authService.loadUserByUsername();
+//	authService.loadUserByUsername();
 	return "login";
   }
 
